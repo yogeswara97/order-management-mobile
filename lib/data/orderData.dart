@@ -7,8 +7,6 @@ final faker = Faker();
 
 final List<Map<String, String>> orderData = List.generate(100, (index) {
   final statuses = ['New', 'Quotation', 'Invoice', 'Paid', 'Cancelled'];
-  final continents = ['asia', 'europe', 'america', 'africa', 'australia'];
-  final currency = ['idr', 'usd', 'eur'];
   return {
     'name': faker.person.name(),
     'status': statuses[index % 5],

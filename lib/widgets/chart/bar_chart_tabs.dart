@@ -1,5 +1,4 @@
 import 'package:bali_baci_order/utils/color_utils.dart';
-import 'package:bali_baci_order/widgets/chart/bar_chart.dart';
 import 'package:flutter/material.dart';
 
 class BarChartWithTabs extends StatefulWidget {

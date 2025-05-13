@@ -1,13 +1,12 @@
-import 'package:bali_baci_order/widgets/button_widget.dart';
-import 'package:bali_baci_order/widgets/date_picker.dart';
 import 'package:bali_baci_order/widgets/metrics/metrics_grid.dart';
 import 'package:bali_baci_order/widgets/refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:bali_baci_order/widgets/card_widget.dart';
 import 'package:bali_baci_order/widgets/table/table_widget.dart';
 import 'package:bali_baci_order/data/orderData.dart';
+
 class Order extends StatefulWidget {
-  Order({super.key});
+  const Order({super.key});
 
   @override
   State<Order> createState() => _OrderState();
@@ -26,7 +25,6 @@ class _OrderState extends State<Order> {
       final statusMatch =
           selectedStatus == 'All' || row['status'] == selectedStatus;
 
-     
       return statusMatch;
     }).toList();
   }
@@ -50,7 +48,9 @@ class _OrderState extends State<Order> {
           children: [
             ListView(
               children: [
-                MetricsGrid(metricsData: orderStatusMetrics,),
+                MetricsGrid(
+                  metricsData: orderStatusMetrics,
+                ),
                 // Filter Section inside CardWidget
                 CardWidget(
                   child: Padding(
@@ -94,7 +94,7 @@ class _OrderState extends State<Order> {
                     ),
                   ),
                 ),
-                
+
                 CardWidget(
                     child: TableWidget(
                         titleData: titleData, tableData: getFilteredData()))

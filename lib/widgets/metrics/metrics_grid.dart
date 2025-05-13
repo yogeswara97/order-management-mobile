@@ -1,5 +1,4 @@
 import 'package:bali_baci_order/utils/color_utils.dart';
-import 'package:bali_baci_order/widgets/card_widget.dart';
 import 'package:bali_baci_order/widgets/metrics/metric_card.dart';
 import 'package:flutter/material.dart';
 
