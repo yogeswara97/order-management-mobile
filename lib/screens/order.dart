@@ -26,41 +26,9 @@ class _OrderState extends State<Order> {
       final statusMatch =
           selectedStatus == 'All' || row['status'] == selectedStatus;
 
-      final startDate = DateTime.tryParse(startDateController.text);
-      final endDate = DateTime.tryParse(endDateController.text);
-      final rowDate = DateTime.tryParse(row['date'] ?? '');
-
-      final dateMatch = (startDate == null ||
-              (rowDate != null &&
-                  rowDate
-                      .isAfter(startDate.subtract(const Duration(days: 1))))) &&
-          (endDate == null ||
-              (rowDate != null &&
-                  rowDate.isBefore(endDate.add(const Duration(days: 1)))));
-
-      return statusMatch && dateMatch;
+     
+      return statusMatch;
     }).toList();
-  }
-
-  void _showDateRangePicker() {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 400,
-          padding: EdgeInsets.all(16),
-          child: DatePicker(
-            onDateRangeSelected: (String start, String end) {
-              setState(() {
-                startDateController.text = start;
-                endDateController.text = end;
-              });
-              Navigator.pop(context);
-            },
-          ),
-        );
-      },
-    );
   }
 
   @override
@@ -119,59 +87,6 @@ class _OrderState extends State<Order> {
                                   );
                                 }).toList(),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 16),
-
-                        Row(
-                          children: [
-                            // Start Date
-                            Expanded(
-                              child: TextFormField(
-                                controller: startDateController,
-                                readOnly: true,
-                                onTap: _showDateRangePicker,
-                                decoration: InputDecoration(
-                                  labelText: "Start Date",
-                                  hintText: "YYYY-MM-DD",
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(width: 20),
-
-                            // End Date
-                            Expanded(
-                              child: TextFormField(
-                                controller: endDateController,
-                                readOnly: true,
-                                onTap: _showDateRangePicker,
-                                decoration: InputDecoration(
-                                  labelText: "End Date",
-                                  hintText: "YYYY-MM-DD",
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        SizedBox(height: 16),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            ButtonWidget(
-                              text: 'Reset',
-                              onPressed: () {
-                                setState(() {
-                                  selectedStatus = 'All';
-                                  startDateController.clear();
-                                  endDateController.clear();
-                                });
-                              },
                             ),
                           ],
                         ),
