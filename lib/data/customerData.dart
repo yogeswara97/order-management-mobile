@@ -8,8 +8,10 @@ final List<Map<String, String>> tableData = List.generate(100, (index) {
   final name = faker.person.name();
   // Convert name to email: lowercase, spaces to dots, append @gmail.com
   final email = '${name.toLowerCase().replaceAll(' ', '.')}@gmail.com';
+  final id = faker.guid.guid();
 
   return {
+    'id':id,
     'name': name,
     'status': statuses[index % 2], 
     'email': email, 

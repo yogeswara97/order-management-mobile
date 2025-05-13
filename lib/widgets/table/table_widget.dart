@@ -47,7 +47,7 @@ class TableWidget extends StatelessWidget {
               0: FlexColumnWidth(2),
               1: FlexColumnWidth(2),
               2: FlexColumnWidth(1.5),
-              3: FlexColumnWidth(1), // Column for Action Button
+              // 3: FlexColumnWidth(1), // Column for Action Button
             },
             children: [
               // Header Row
@@ -66,18 +66,18 @@ class TableWidget extends StatelessWidget {
                           ),
                         ))
                     .toList()
-                    ..add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          '',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
+                    // ..add(
+                    //   Padding(
+                    //     padding: const EdgeInsets.all(8.0),
+                    //     child: Text(
+                    //       '',
+                    //       style: const TextStyle(
+                    //         fontWeight: FontWeight.bold,
+                    //         fontSize: 16,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
               ),
               // Data Rows
               ...tableData.asMap().entries.map((entry) {
@@ -132,15 +132,15 @@ class TableWidget extends StatelessWidget {
                           style: const TextStyle(fontSize: 14)),
                     ),
                     // Action Button Column
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                        icon: Icon(Icons.remove_red_eye_rounded),
-                        onPressed: () {
-                          print('More options for ${row['name']}');
-                        },
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: IconButton(
+                    //     icon: Icon(Icons.remove_red_eye_rounded),
+                    //     onPressed: () {
+                    //       print('More options for ${row['name']}');
+                    //     },
+                    //   ),
+                    // ),
                   ],
                 );
               }).toList(),

@@ -82,7 +82,7 @@ class _OrderState extends State<Order> {
           children: [
             ListView(
               children: [
-                MetricsGrid(metricsData: [],),
+                MetricsGrid(metricsData: orderStatusMetrics,),
                 // Filter Section inside CardWidget
                 CardWidget(
                   child: Padding(
