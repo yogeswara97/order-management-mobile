@@ -4,7 +4,7 @@ import 'package:bali_baci_order/widgets/chart/bar_chart.dart';
 import 'package:bali_baci_order/widgets/chart/bar_chart_tabs.dart';
 import 'package:bali_baci_order/widgets/chart/pie_chart.dart';
 import 'package:bali_baci_order/widgets/chart/left_bar_chart.dart';
-import 'package:bali_baci_order/widgets/metrics/metrics.dart';
+import 'package:bali_baci_order/widgets/metrics/metrics_grid.dart';
 import 'package:bali_baci_order/widgets/navtop.dart';
 import 'package:bali_baci_order/widgets/refresh_indicator.dart';
 import 'package:bali_baci_order/widgets/table/table_widget.dart';
@@ -12,8 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:bali_baci_order/data/dashboardData.dart';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
-
+  Dashboard({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +37,9 @@ class Dashboard extends StatelessWidget {
             ListView(
               children: [
                 Navtop(),
-                Metrics(),
+                MetricsGrid(
+                  metricsData: metricsData,
+                ),
                 CardWidget(
                   cardHeader: CardHeader(
                     title: "Latest order",

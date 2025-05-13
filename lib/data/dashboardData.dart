@@ -1,5 +1,7 @@
 // lib/utils/data.dart
 
+import 'package:flutter/material.dart';
+
 final List<Map<String, dynamic>> sampleData = [
   {"label": "Jan", "value": 5000000},
   {"label": "Feb", "value": 120000000},
@@ -153,5 +155,36 @@ final List<Map<String, String>> tableData = [
     'name': 'Cassandra O\'Kon',
     'status': 'Cancelled',
     'total': '700',
+  },
+];
+
+final metricsData = [
+  {
+    'icon': Icons.bar_chart,
+    'title': 'New Order',
+    'value': '\$12K',
+    'percentage': 3.5,
+    'status': 'up',
+  },
+  {
+    'icon': Icons.people,
+    'title': 'Total Order',
+    'value': '1.2K',
+    'percentage': -1.2,
+    'status': 'down',
+  },
+  {
+    'icon': Icons.shopping_cart,
+    'title': 'Revenue Year',
+    'value': '300',
+    'percentage': 0,
+    'status': 'flat',
+  },
+  {
+    'icon': Icons.star,
+    'title': 'Total Customers',
+    'value': '4.8',
+    // 'percentage': 1.1,
+    // 'status': 'up',
   },
 ];

@@ -1,3 +1,4 @@
+import 'package:bali_baci_order/screens/login.dart';
 import 'package:bali_baci_order/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,10 @@ class OverflowMenuButton extends StatelessWidget {
         // Handle pilihan menu
         switch (result) {
           case 'logout':
-            print('Logout diklik');
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+            );
             break;
         }
       },

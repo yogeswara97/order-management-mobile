@@ -1,3 +1,4 @@
+import 'package:bali_baci_order/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
 class MetricCard extends StatelessWidget {
@@ -38,64 +39,77 @@ class MetricCard extends StatelessWidget {
         textColor = Colors.grey[600];
         statusIcon = Icons.compare_arrows;
         break;
+      default:
+        // Optional: kasih nilai default buat safety
+        bgColor = Colors.grey[100];
+        textColor = Colors.grey[500];
+        statusIcon = Icons.help_outline;
+        break;
     }
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
+    return CardWidget(
+      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 48,
-            width: 48,
+            height: 30,
+            width: 30,
             decoration: BoxDecoration(
               color: Colors.blue[100],
               borderRadius: BorderRadius.circular(24),
             ),
-            child: Icon(icon, color: Colors.blue[600], size: 24),
+            child: Icon(icon, color: Colors.blue[600], size: 20),
           ),
-          const SizedBox(height: 16),
-          Row(
+          const SizedBox(height: 1),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey,
-                ),
-              ),
-              const SizedBox(width: 8),
-              if (percentage != null && percentageStatus != null)
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: bgColor,
-                    borderRadius: BorderRadius.circular(20),
+              Row(
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey,
+                    ),
                   ),
-                  child: Row(
-                    children: [
-                      Icon(statusIcon, size: 14, color: textColor),
-                      const SizedBox(width: 4),
-                      Text(
-                        '${percentage!.toStringAsFixed(1)}%',
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: textColor),
+                  const SizedBox(width: 8),
+                  if (percentage != null && percentageStatus != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: bgColor,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                    ],
-                  ),
-                ),
+                      child: Row(
+                        children: [
+                          Icon(statusIcon, size: 14, color: textColor),
+                          const SizedBox(width: 4),
+                          Text(
+                            '${percentage!.toStringAsFixed(1)}%',
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: textColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87),
+              ),
             ],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            value,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
           ),
         ],
       ),

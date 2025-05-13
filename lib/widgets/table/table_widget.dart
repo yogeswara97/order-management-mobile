@@ -5,7 +5,7 @@ class TableWidget extends StatelessWidget {
   final List<String> titleData;
   final List<Map<String, String>> tableData;
 
-  TableWidget({super.key, required this.titleData, required this.tableData});
+  const TableWidget({super.key, required this.titleData, required this.tableData});
 
   Map<String, Map<String, Color>> getStatusColors() {
     return {
@@ -45,8 +45,9 @@ class TableWidget extends StatelessWidget {
           child: Table(
             columnWidths: const {
               0: FlexColumnWidth(2),
-              1: FlexColumnWidth(1.8),
-              2: FlexColumnWidth(2),
+              1: FlexColumnWidth(2),
+              2: FlexColumnWidth(1.5),
+              3: FlexColumnWidth(1), // Column for Action Button
             },
             children: [
               // Header Row
@@ -64,7 +65,19 @@ class TableWidget extends StatelessWidget {
                             ),
                           ),
                         ))
-                    .toList(),
+                    .toList()
+                    ..add(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          '',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
               ),
               // Data Rows
               ...tableData.asMap().entries.map((entry) {
@@ -77,11 +90,10 @@ class TableWidget extends StatelessWidget {
                         .withOpacity(0.1); // atau pakai warna lain
 
                 final status = row['status']!;
-                final statusStyle = statusColors[status] ??
-                    {
-                      'background': Colors.transparent,
-                      'text': Colors.black,
-                    };
+                final statusStyle = statusColors[status] ?? {
+                  'background': Colors.transparent,
+                  'text': Colors.black,
+                };
 
                 return TableRow(
                   decoration: BoxDecoration(color: rowColor),
@@ -118,6 +130,16 @@ class TableWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(row['total']!,
                           style: const TextStyle(fontSize: 14)),
+                    ),
+                    // Action Button Column
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        icon: Icon(Icons.remove_red_eye_rounded),
+                        onPressed: () {
+                          print('More options for ${row['name']}');
+                        },
+                      ),
                     ),
                   ],
                 );

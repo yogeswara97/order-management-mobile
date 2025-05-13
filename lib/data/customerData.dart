@@ -11,7 +11,7 @@ final List<Map<String, String>> tableData = List.generate(100, (index) {
 
   return {
     'name': name,
-    'status': statuses[index % 2], // Fixed: Use modulo 2 for 2 statuses
-    'email': email, // Name-based email instead of faker.internet.email()
+    'status': statuses[index % 2], 
+    'email': email, 
   };
 });
